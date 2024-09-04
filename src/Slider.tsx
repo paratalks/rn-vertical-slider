@@ -3,6 +3,7 @@ import { StyleSheet, View, ViewStyle } from 'react-native';
 import {
   Gesture,
   GestureDetector,
+  GestureHandlerRootView,
   GestureStateChangeEvent,
   GestureUpdateEvent,
   PanGestureChangeEventPayload,
@@ -128,6 +129,7 @@ const RNVerticalSlider = React.forwardRef<TSliderRef, TSliderProps>(
       return style;
     }, [point.value]);
     return (
+      <GestureHandlerRootView>
       <GestureDetector gesture={panGesture}>
         <View style={[baseViewStyle, containerStyle]}>
           <View style={[baseViewStyle, styles.box, sliderStyle]}>
@@ -138,6 +140,7 @@ const RNVerticalSlider = React.forwardRef<TSliderRef, TSliderProps>(
           </Animated.View>
         </View>
       </GestureDetector>
+      </GestureHandlerRootView>
     );
   }
 );
